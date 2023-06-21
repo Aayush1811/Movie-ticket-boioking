@@ -1,0 +1,738 @@
+#include <iostream>
+#include <cmath>
+#include <windows.h>
+using namespace std;
+
+class movie
+{
+protected:
+    int mov;
+    string list;
+
+public:
+    void set_movie();
+};
+void movie ::set_movie()
+{
+lable4:
+    cout << "1 --> KGF " << endl;
+    cout << "2 --> RRR" << endl;
+    cout << "3 --> RUNWAY_34 " << endl;
+    cout << "4 --> JUNGLE_BOOK " << endl;
+    cout << "5 --> JERSY " << endl;
+    cout << "6 --> THE KASHMIR FILES " << endl;
+
+    cout << "SELECT YOUR MOVIE: ";
+    cin >> mov;
+    cout << endl;
+
+    switch (mov)
+    {
+    case 1:
+    {
+        cout << "SELECT YOUR MOVIE TIMINGS:" << endl;
+        break;
+    }
+    case 2:
+    {
+        cout << "SELECT YOUR MOVIE TIMINGS:" << endl;
+        break;
+    }
+    case 3:
+    {
+        cout << "SELECT YOUR MOVIE TIMINGS:" << endl;
+        break;
+    }
+    case 4:
+    {
+        cout << "SELECT YOUR MOVIE TIMINGS:" << endl;
+        break;
+    }
+    case 5:
+    {
+        cout << "SELECT YOUR MOVIE TIMINGS:" << endl;
+        break;
+    }
+    case 6:
+    {
+        cout << "SELECT YOUR MOVIE TIMINGS:" << endl;
+        break;
+    }
+    default:
+    {
+        HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+        SetConsoleTextAttribute(h, 4);
+        cout << "NO SUCH MOVIE AVAILABLE!" << endl;
+        SetConsoleTextAttribute(h, 7);
+        cout << "CAN I SHOW YOU MOVIE LIST AGAIN?" << endl;
+        cin >> list;
+        if (list == "yes")
+        {
+            goto lable4;
+        }
+        else if (list == "no")
+        {
+            cout << "THANKS FOR VISITING\n";
+            cout << "-------------------\n";
+            exit(0);
+        }
+    }
+    }
+}
+
+class slot : virtual public movie
+{
+protected:
+    double time;
+
+public:
+    void set_slot();
+};
+
+void slot ::set_slot()
+{
+    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    cout << "________________________\n";
+    cout << "AVAILABLE TIMINGS: " << endl;
+    cout << "AM" << endl;
+    cout << "8:00 , 10:30 , 11:00" << endl;
+    cout << "PM" << endl;
+    cout << "12:00 , 2:30 , 5:45 " << endl;
+    cout << "7:00 , 9:50 , 11:30 " << endl;
+    cout << "\n";
+lable1:
+
+    cout << "CHOOSE YOUR SLOT: ";
+    cin >> time;
+    if (time != 8.00 && time != 10.30 && time != 11.00 && time != 12.00 && time != 7.00 && time != 2.30 && time != 5.45 && time != 9.50 && time != 11.30)
+    {
+        SetConsoleTextAttribute(h, 4);
+        cout << "THIS TIME IS NOT AVAILABLE !!" << endl;
+        cout << "PLESE CHOOSE ANOTHER TIME" << endl;
+        SetConsoleTextAttribute(h, 7);
+        goto lable1;
+    }
+}
+
+class location : virtual public movie
+
+{
+protected:
+    string loc;
+    int l;
+    string search;
+
+public:
+    void set_location();
+};
+
+void location ::set_location()
+{
+    cout << "----------------------------\n";
+    cout << "1 --> PVR" << endl;
+    cout << "2 --> INOX" << endl;
+    cout << "3 --> RAJHANS" << endl;
+    cout << "4 --> VALANTINE" << endl;
+lable3:
+    cout << "ENTER YOUR VENUE: ";
+    cin >> l;
+    switch (l)
+    {
+    case 1:
+    {
+        loc = "PVR";
+        break;
+    }
+    case 2:
+    {
+        loc = "INOX";
+        break;
+    }
+    case 3:
+    {
+        loc = "RAJHANS";
+        break;
+    }
+    case 4:
+    {
+        loc = "VALANTINE";
+        break;
+    }
+    default:
+    {
+        HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+        SetConsoleTextAttribute(h, 4);
+        cout << "THEATER NOT FOUND..." << endl;
+        SetConsoleTextAttribute(h, 7);
+        cout << endl;
+        cout << "DO YOU WANT TO SEARCH ANOTHER PLACE?" << endl;
+        cin >> search;
+        if (search == "yes")
+        {
+            goto lable3;
+        }
+        else if (search == "no")
+        {
+            cout << "THANKS FOR VISITING\n";
+            cout << "-------------------\n";
+            exit(0);
+        }
+    }
+    }
+}
+
+class ticket : virtual public movie
+{
+protected:
+    int num;
+    int op;
+    float total;
+    int amount;
+
+public:
+    void set_ticket();
+};
+
+void ticket ::set_ticket()
+{
+    cout << "----------------------------\n";
+    HANDLE h1 = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(h1, 2);
+    cout << "SIMPLE SEAT: 120-200 Rs." << endl;
+    cout << "RECLINER SEAT: 250 Rs." << endl;
+    SetConsoleTextAttribute(h1, 7);
+    cout << "\n";
+
+    cout << "HOW MANY TICKETS DO YOU WANT TO BUY?";
+    cin >> num;
+
+    cout << "WHICH CATAGORY?" << endl;
+    cout << "1--> simple seat" << endl;
+    cout << "2--> recliner seat" << endl;
+lable2:
+    cout << "ENTER YOUR CHOICE:" << endl;
+    cin >> op;
+    if (op == 1)
+    {
+        ;
+    }
+    else if (op == 2)
+    {
+        ;
+    }
+    else
+    {
+        HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+        SetConsoleTextAttribute(h, 4);
+        cout << "THERE IS NO OTHER CATAGORY..." << endl;
+        SetConsoleTextAttribute(h, 7);
+
+        goto lable2;
+    }
+
+    cout << endl;
+
+    if (op == 1)
+    {
+        HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+        SetConsoleTextAttribute(h, 2);
+        cout << "ROW a-c TICKET PRICE: 120Rs." << endl;
+        cout << "ROW A-F TICKET PRICE: 200Rs." << endl;
+        SetConsoleTextAttribute(h, 7);
+    }
+    else if (op == 2)
+    {
+        amount = 250;
+        total = (float)num * 250;
+    }
+}
+
+class row : virtual public movie, virtual public ticket
+{
+protected:
+    char R;
+    string r;
+
+public:
+    void set_row();
+};
+
+void row ::set_row()
+{
+    cout << "SELECT ROW: " << endl;
+    cout << "R -> # # #     # # # # # # # #    # # # " << endl;
+    cout << "F -> _ _ _     _ _ _ _ _ _ _ _    _ _ _ " << endl;
+    cout << "E -> _ _ _     _ _ _ _ _ _ _ _    _ _ _ " << endl;
+    cout << "D -> _ _ _     _ _ _ _ _ _ _ _    _ _ _ " << endl;
+    cout << "C -> _ _ _     _ _ _ _ _ _ _ _    _ _ _ " << endl;
+    cout << "B -> _ _ _     _ _ _ _ _ _ _ _    _ _ _ " << endl;
+    cout << "A -> _ _ _     _ _ _ _ _ _ _ _    _ _ _ " << endl;
+    cout << "\n";
+    cout << "c -> _ _ _     _ _ _ _ _ _ _ _    _ _ _ " << endl;
+    cout << "b -> _ _ _     _ _ _ _ _ _ _ _    _ _ _ " << endl;
+    cout << "a -> _ _ _     _ _ _ _ _ _ _ _    _ _ _ " << endl;
+
+    cout << "                    screen" << endl;
+
+    if (op == 2) // op ==2 recliner directly allocated R row
+    {
+        R = 'R';
+    }
+    else // otherwisw op==1 simple seat
+    {
+    lable:
+        cout << "a-F: ";
+        cin >> R;
+
+        if (R == 'R') // if set simle and select R row than not posiible
+        {
+            HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+            SetConsoleTextAttribute(h, 4);
+            cout << "YOU CAN`T CHOOSE R ROW" << endl;
+            cout << "R ROW ONLY FOR RECLINER CATAGORY" << endl;
+            SetConsoleTextAttribute(h, 7);
+            cout << "DO YOU WANT TO CHOOSE RECLINER?" << endl;
+            cin >> r;
+            if (r == "yes")
+            {
+                amount = 250;
+                total = (float)num * 250;
+                op = 2;
+            }
+            else if (r == "no")
+            {
+                goto lable;
+            }
+        }
+        else if (R == 'a' || R == 'b' || R == 'c')
+        {
+            amount = 120;
+            total = (float)num * 120;
+        }
+        else if (R == 'A' || R == 'B' || R == 'C' || R == 'D' || R == 'E' || R == 'F')
+        {
+
+            amount = 200;
+            total = (float)num * 200;
+        }
+    }
+}
+
+class snacks
+{
+protected:
+
+    string want;
+
+    int items;                 // how many item need
+    int *ptr = new int[items]; // store item code
+    string thing[10];          // store all item names during loop
+    static int n;              // items sr no
+    static int i;
+    int code;
+    int q; // take quntity;
+
+    // all items individual quntity
+    // all are initially 0
+
+    static int pq;  // popcorn
+    static int cq;  // chips
+    static int cdq; // colddrink
+    static int vq;  // vada
+    static int sq;  // sandwich
+    static int fq;  // frankee
+    static int wq;  // water
+
+    // store total amount of individual items
+    static int tot_p;
+    static int tot_c;
+    static int tot_cd;
+    static int tot_v;
+    static int tot_s;
+    static int tot_f;
+    static int tot_w;
+
+    // store total amount of all items
+    int total_bill;
+
+    // store name of items
+    string pop;
+    string c;
+    string cd;
+    string v;
+    string s;
+    string f;
+    string w;
+
+public:
+    void set_snacks_lisyt();
+};
+
+int snacks ::n = 1;
+int snacks ::i;
+
+int snacks ::pq = 0;
+int snacks ::cq = 0;
+int snacks ::cdq = 0;
+int snacks ::vq = 0;
+int snacks ::sq = 0;
+int snacks ::fq = 0;
+int snacks ::wq = 0;
+
+int snacks ::tot_p;
+int snacks ::tot_c;
+int snacks ::tot_cd;
+int snacks ::tot_v;
+int snacks ::tot_s;
+int snacks ::tot_f;
+int snacks ::tot_w;
+
+void snacks ::set_snacks_lisyt()
+{
+    cout << "--------------------------------\n";
+    cout << "DO YOU WANT SNACKS DURING MOVIE?" << endl;
+    cin >> want;
+    if (want == "no")
+    {
+        ;
+    }
+    else if (want == "yes")
+    {
+        cout << "SNACKS LIST:" << endl;
+        cout << "|---------------------------------------------\n";
+        cout << "| CODE    |     ITEMS       |    PRICE(Rs.)" << endl;
+        cout << "|---------|-----------------|-----------------\n";
+        cout << "| 1-->    |    popcorn      |     100 Rs. " << endl;
+        cout << "| 2-->    |    chips        |     40 Rs. " << endl;
+        cout << "| 3-->    |    colddrink    |     70 Rs. " << endl;
+        cout << "| 4-->    |    vada         |     30 Rs. " << endl;
+        cout << "| 5-->    |    sandwich     |     50 Rs. " << endl;
+        cout << "| 6-->    |    frankee      |     50 Rs. " << endl;
+        cout << "| 7-->    |    water        |     20 Rs. " << endl;
+
+    lable5:
+        cout << "HOW MANY ITEMS DO YOU WANT? ";
+        cin >> items;
+        if (items > 7)
+        {
+            cout << "HERE ONLY 7 ITEMS AVAILABLE" << endl;
+            goto lable5;
+        }
+
+    lable6:
+        for (int i = 0; i < items; i++)
+        {
+            cout << "ENTER " << n << " ITEM CODE:" << endl;
+            cin >> code;
+            (*ptr) = code; // pointer store items code witch customer want
+            switch (code)
+            {
+            case 1:
+            {
+                cout << "POPCORN:" << endl;
+                thing[n - 1] = "popcorn"; // thing string 1st member thing[0]
+
+                cout << "QUNTITY? ";
+                cin >> q;
+                pq = q;
+                break;
+            }
+            case 2:
+            {
+                cout << "CHIPS:" << endl;
+                thing[n - 1] = "chips";
+
+                cout << "QUNTITY? ";
+                cin >> q;
+                cq = q;
+                break;
+            }
+            case 3:
+            {
+                cout << "COLDDRINK:" << endl;
+                thing[n - 1] = "colddrink";
+
+                cout << "QUNTITY? ";
+                cin >> q;
+                cdq = q;
+                break;
+            }
+            case 4:
+            {
+                cout << "VADA:" << endl;
+                thing[n - 1] = "vada";
+
+                cout << "QUNTITY? ";
+                cin >> q;
+                vq = q;
+                break;
+            }
+            case 5:
+            {
+                cout << "SANDWICH:" << endl;
+                thing[n - 1] = "sandwitch";
+
+                cout << "QUNTITY? ";
+                cin >> q;
+                sq = q;
+                break;
+            }
+            case 6:
+            {
+                cout << "FRANKEE:" << endl;
+                thing[n - 1] = "frankee";
+
+                cout << "QUNTITY? ";
+                cin >> q;
+                fq = q;
+                break;
+            }
+            case 7:
+            {
+                cout << "WATER BOTTELE:" << endl;
+                thing[n - 1] = "water";
+
+                cout << "QUNTITY? ";
+                cin >> q;
+                wq = q;
+                break;
+            }
+
+            default:
+            {
+                HANDLE h2 = GetStdHandle(STD_OUTPUT_HANDLE);
+                SetConsoleTextAttribute(h2, 4);
+                cout << "THIS IS NOT AVAILABLE..." << endl;
+                cout << "PLZ CHOOSE AVAILABLE ITEMS.." << endl;
+                SetConsoleTextAttribute(h2, 7);
+                goto lable6;
+                break;
+            }
+            }
+
+            // switch case 1st time
+            // now chech that string array 1st member is what
+            // acording to item name that item string store item name
+            // bcz use item name in bill
+
+            if (thing[n - 1] == "popcorn")
+            {
+                pop = "Popcorn";
+            }
+            if (thing[n - 1] == "chips")
+            {
+                c = "Chips";
+            }
+            if (thing[n - 1] == "colddrink")
+            {
+                cd = "ColdDrink";
+            }
+            if (thing[n - 1] == "vada")
+            {
+                v = "Vada";
+            }
+            if (thing[n - 1] == "sandwitch")
+            {
+                s = "Sandwich";
+            }
+            if (thing[n - 1] == "frankee")
+            {
+                f = "Frankee";
+            }
+            if (thing[n - 1] == "water")
+            {
+                w = "Water";
+            }
+
+            // end whole 1st item opration 1 time
+
+            ptr++;
+            n++;
+
+            // now n and ptr inc
+            // n inc so string array than thing[1] == than store new item
+            // and than that name macth so it eill give item name to item string
+        }
+
+        HANDLE h1 = GetStdHandle(STD_OUTPUT_HANDLE);
+        SetConsoleTextAttribute(h1, 22);
+        cout << "SNACKS BILL..." << endl;
+        cout << "--------------------------------\n";
+        SetConsoleTextAttribute(h1, 7);
+        cout << endl;
+        if (pq > 0 && pop == "Popcorn")
+        {
+            tot_p = pq * 100;
+            cout << pq << " X " << pop << " = " << tot_p << endl;
+        }
+        if (cq > 0 && c == "Chips")
+        {
+            tot_c = cq * 40;
+            cout << cq << " X " << c << " = " << tot_c << endl;
+        }
+        if (cdq > 0 && cd == "ColdDrink")
+        {
+            tot_cd = cdq * 70;
+            cout << cdq << " X " << cd << " = " << tot_cd << endl;
+        }
+        if (vq > 0 && v == "Vada")
+        {
+            tot_v = vq * 30;
+            cout << vq << " X " << v << " = " << tot_v << endl;
+        }
+        if (sq > 0 && s == "Sandwich")
+        {
+            tot_s = sq * 50;
+            cout << sq << " X " << s << " = " << tot_s << endl;
+        }
+        if (fq > 0 && f == "Frankee")
+        {
+            tot_f = fq * 50;
+            cout << fq << " X " << f << " = " << tot_f << endl;
+        }
+        if (wq > 0 && w == "Water")
+        {
+            tot_w = wq * 20;
+            cout << wq << " X " << w << " = " << tot_w << endl;
+        }
+
+        HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+        SetConsoleTextAttribute(h, 2);
+        cout << "--------------------------------\n";
+        SetConsoleTextAttribute(h, 7);
+
+        total_bill = tot_p + tot_c + tot_cd + tot_v + tot_s + tot_f + tot_w;
+        cout << "SUB TOTAL: " << endl;
+        cout << total_bill << " Rs." << endl;
+    }
+}
+
+class payment : public slot, public location, virtual public ticket, virtual public row, public snacks
+{
+    float tax;
+    string cat;
+
+public:
+    void display();
+};
+
+void payment ::display()
+{
+    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+    cout << endl;
+    SetConsoleTextAttribute(h, 21);
+    cout << "YOUR MOVIE DETAILS: " << endl;
+    cout << "------------------- " << endl;
+    SetConsoleTextAttribute(h, 7);
+    cout << endl;
+
+    if (mov == 1)
+    {
+        cout << "MOVIE    : KGF" << endl;
+    }
+    else if (mov == 2)
+    {
+        cout << "MOVIE    : RRR" << endl;
+    }
+    else if (mov == 3)
+    {
+        cout << "MOVIE    : RUNWAY 34" << endl;
+    }
+    else if (mov == 4)
+    {
+        cout << "MOVIE    : JUNGLE BOOK" << endl;
+    }
+    else if (mov == 5)
+    {
+        cout << "MOVIE    : JERSY" << endl;
+    }
+    else if (mov == 6)
+    {
+        cout << "MOVIE    : THE KASHMIR FILES" << endl;
+    }
+    cout << "THEATER  : " << loc << endl;
+    cout << "\n";
+    cout << "FRI, 18 NOV " << endl;
+
+    if (time == 8.00)
+    {
+        cout << "TIMING: 8:00 AM" << endl;
+    }
+    else if (time == 10.30)
+    {
+        cout << "TIMING: 10:30 AM" << endl;
+    }
+    else if (time == 11.00)
+    {
+        cout << "TIMING: 11:00 AM" << endl;
+    }
+    else if (time == 12.00)
+    {
+        cout << "TIMING: 12:00 PM" << endl;
+    }
+    else if (time == 2.30)
+    {
+        cout << "TIMING: 2:30 PM" << endl;
+    }
+    else if (time == 5.45)
+    {
+        cout << "TIMING: 5:45 PM" << endl;
+    }
+    else if (time == 7.00)
+    {
+        cout << "TIMING: 7:00 PM" << endl;
+    }
+    else if (time == 9.50)
+    {
+        cout << "TIMING: 9:50 PM" << endl;
+    }
+    else if (time == 11.30)
+    {
+        cout << "TIMING: 11:30 PM" << endl;
+    }
+    else
+    {
+        cout << "SHOW IS NOT AVAILABLE." << endl;
+    }
+    cout << "\n";
+    cout << "----------------------xxxxxxxxxxxxxxxxxxxxx---------------------\n";
+    cout << "\n";
+    cout << "Payment Details: " << endl;
+    cout << "TICKETS BOOKED: " << num << endl;
+    if (op == 1)
+    {
+        cout << "SEAT CATAGORY: Simple" << endl;
+    }
+    else if (op == 2)
+    {
+        cout << "SEAT CATAGORY: Recliner" << endl;
+    }
+    cout << endl;
+    cout << "ROW   : " << R << endl;
+    cout << "SCREEN: 5" << endl;
+    cout << "AMOUNT:" << endl;
+    cout << amount << " X " << num << endl;
+    cout << total << " Rs. + TAX" << endl;
+
+    tax = (total * 9) / 100;
+    cout << endl;
+    cout << "Your Total Amount: " << endl;
+    tax = total + tax;
+    cout << tax << " Rs." << endl;
+
+    cout << endl;
+    cout << "PAYMENT SUCCESSFUL." << endl;
+}
+
+int main()
+{
+    payment p;
+    p.set_movie();
+    p.set_slot();
+    p.set_location();
+    p.set_ticket();
+    p.set_row();
+    p.set_snacks_lisyt();
+    p.display();
+}
